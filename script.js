@@ -1,21 +1,20 @@
+// variables 
 
-const startButton = document.getElementById('start-btn')
+var timerEl = document.getElementById("countdowntimer");
+var timeLeft = 60;
 
-startButton.addEventListener('click', startGame)
+// functions
 
-function start() {
-    console.log('started')
-    startButton.classList.add('hide')
+function timer() {
+    var timeInterval = setInterval(function () {
+        timeLeft--;
+        timerEl.textContent = timeLeft
+        if (timeLeft === 0) {
+            clearInterval(timeInterval);
+
+        }
+    }, 1000);
 }
 
-function nextQuestion() {
+timer()
 
-}
-
-function previousQuestion() {
-
-}
-
-function selectAnswer() {
-
-}

@@ -17,6 +17,15 @@ body {
     background-color: rgb(3, 65, 3);
 }
 
+h1 {
+    background-color: blanchedalmond;
+    display: inline-flex;
+    justify-content: center;
+    font-size: 50px;
+    height: 50px;
+    width: 150px;
+}
+
 .container {
 
     padding: 20;
@@ -26,6 +35,7 @@ body {
     background-color: gray;
 
 }
+
 
 .btn-grid {
 
