@@ -5,15 +5,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>timer</title>
+    <title>quiz</title>
     <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
+    <p id="countdowntimer"></p>
 
-    <h1 id="countdowntimer"></h1>
+    <div class="score">
+        <p id="scoreboard"></p>
 
+    </div>
+    <div class="container">
+
+        <div id="question-container" class="hide"></div>
+
+        <div id="question-block">Question</div>
+
+        <div id="answer-btn" class="btn-grid">
+            <button class="btn" id="answer1">A</button>
+            <button class="btn" id="answer2">B</button>
+            <button class="btn" id="answer3">C</button>
+            <button class="btn" id="answer4">D</button>
+        </div>
+
+
+        <div class="controls">
+
+            <button id="start-btn" class="start-btn btn ">Start</button>
+
+            <button id="next-btn" class="start-btn btn  ">Next</button>
+
+            <button id="previous-btn" class="start-btn btn ">previous</button>
+
+        </div>
+
+    </div>
     <script src="script.js"></script>
 </body>
 
