@@ -66,75 +66,68 @@ window.onload = function () {
     const questionMax = 4;
     // console.log(ansBtn)
 
-    function myFunction() {
 
+    $("#start-btn").on("click", startGame)
 
+    function startGame() {
+        $("#start-btn").hide();
 
-        $("#start-btn").on("click", startgame)
-
-
-
-        function startGame() {
-
-
-            var timeInterval = setInterval(function () {
-                timeLeft--;
-                timerEl.textContent = timeLeft;
-                if (timeLeft === 0) {
-                    clearInterval(timeInterval);
-                }
-            }, 1000);
-
-            questionCounter = 0;
-            score = 0;
-            availableQuestions = [...questionBank];
-            console.log(availableQuestions)
-            getNewQuestion();
-
-        }
-
-
-
-        startGame();
-
-        function getNewQuestion() {
-            questionCounter++;
-            questionIndex = Math.floor(Math.random() * availableQuestions.length);
-            currentQuestion = availableQuestions[questionIndex];
-            questionDisplay.innerText = currentQuestion.question;
-
-            for (var i = 0; i < ansBtn.length; i++) {
-                ansBtn[i].innerText = questionBank[questionIndex]["answer" + i];
+        var timeInterval = setInterval(function () {
+            timeLeft--;
+            timerEl.textContent = timeLeft;
+            if (timeLeft === 0) {
+                clearInterval(timeInterval);
             }
+        }, 1000);
 
-            // ansBtn.forEach(answer => {
-            //     var number = answer.dataset["number"];
-            //     answer.innerText = currentQuestion["answer" + number];
-
-            // });
-
-        };
-
-
-
-
-
-
-        // function showQuestion() {
-        //     var questionDisplay = document.getElementById("question-display");
-        //     var answerDisplayOne = document.getElementById("answer1");
-        //     var answerDisplayTwo = document.getElementById("answer2");
-        //     var answerDisplayThree = document.getElementById("answer3");
-        //     var answerDisplayFour = document.getElementById("answer4");
-
-        //     questionDisplay.textContent = questionBankObj[questionIndex].question;
-        //     answerDisplayOne.textContent = questionBankObj[questionIndex].answer1;
-        //     answerDisplayTwo.textContent = questionBankObj[questionIndex].answer2;
-        //     answerDisplayThree.textContent = questionBankObj[questionIndex].answer3;
-        //     answerDisplayFour.textContent = questionBankObj[questionIndex].answer4;
-
-        // };
-
-        // showQuestion();
+        questionCounter = 0;
+        score = 0;
+        availableQuestions = [...questionBank];
+        console.log(availableQuestions)
+        getNewQuestion();
 
     };
+
+    // startGame();
+
+    function getNewQuestion() {
+        questionCounter++;
+        questionIndex = Math.floor(Math.random() * availableQuestions.length);
+        currentQuestion = availableQuestions[questionIndex];
+        questionDisplay.innerText = currentQuestion.question;
+
+        for (var i = 0; i < ansBtn.length; i++) {
+            ansBtn[i].innerText = questionBank[questionIndex]["answer" + i];
+        }
+
+        // ansBtn.forEach(answer => {
+        //     var number = answer.dataset["number"];
+        //     answer.innerText = currentQuestion["answer" + number];
+
+        // });
+
+    };
+
+
+
+
+
+
+    // function showQuestion() {
+    //     var questionDisplay = document.getElementById("question-display");
+    //     var answerDisplayOne = document.getElementById("answer1");
+    //     var answerDisplayTwo = document.getElementById("answer2");
+    //     var answerDisplayThree = document.getElementById("answer3");
+    //     var answerDisplayFour = document.getElementById("answer4");
+
+    //     questionDisplay.textContent = questionBankObj[questionIndex].question;
+    //     answerDisplayOne.textContent = questionBankObj[questionIndex].answer1;
+    //     answerDisplayTwo.textContent = questionBankObj[questionIndex].answer2;
+    //     answerDisplayThree.textContent = questionBankObj[questionIndex].answer3;
+    //     answerDisplayFour.textContent = questionBankObj[questionIndex].answer4;
+
+    // };
+
+    // showQuestion();
+
+};
