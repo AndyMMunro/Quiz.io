@@ -8,6 +8,8 @@ window.onload = function () {
     var questionDisplay = document.getElementById("question-display");
     var ansBtn = Array.from(document.getElementsByClassName("ans-btn"));
     var questionCounterDisplay = document.getElementsByClassName("question-counter")
+    var highScoreDisplay = $("high-score-display")
+    // Var highScores = [];
     var scoreDisplay = document.getElementById("scoreboard")
     var score = 0;
     var questionCounter = 0;
@@ -41,11 +43,18 @@ window.onload = function () {
     ];
 
 
+    $(".high-score").hide();
+    $("save-score-btn").hide();
+
     $("#start-btn").on("click", startGame)
 
+
     function startGame() {
+
+
         $("#start-btn").hide();
         $(".hide").show();
+
         questionCounter = 0;
         score = 0;
 
@@ -65,7 +74,7 @@ window.onload = function () {
     function getNewQuestion() {
         // stop question cycle
 
-        if (questionCounter < questionBank.length - 1) {
+        if (questionCounter < questionBank.length) {
 
             questionDisplay.innerText = questionBank[questionCounter].question;
 
@@ -81,19 +90,32 @@ window.onload = function () {
 
     };
 
-    // function endGame() {
 
-    //     $("#start-btn").hide();
-    //     $(".hide").show();
+    function endGame() {
+        // use code from the todo list activity to create the high score list 
+        // display score in the end game function 
+        // then add a click event to save the score and name entered 
 
-    //     var storedTodos = localStorage.getItem("score");
+        $(".high-score").show();
+        $("save-score-btn").show();
+        $("article").hide();
 
-    //     storeScore();
-    // };
+        highScoreDisplay.innerHTML = "your score is:" + score;
 
-    // function storeScore() {
 
-    // }
+        storeScore();
+    };
+
+    $("save-score-btn").on("click", saveGame)
+    function saveGame() {
+
+
+        localStorage.setItem("score", JSON.stringify(score));
+
+        console.log(localStorage);
+
+
+    }
 
     $("#answer-btns").on("click", function (event) {
 
@@ -104,8 +126,8 @@ window.onload = function () {
 
         // validator for correct answer
 
-        console.log(event.target.innerText);
-        console.log(questionBank[questionCounter].correctAnswer);
+        // console.log(event.target.innerText);
+        // console.log(questionBank[questionCounter].correctAnswer);
 
         var correctInput = event.target.innerText
 
@@ -113,7 +135,7 @@ window.onload = function () {
 
             score = score + 1;
 
-            // console.log("itworked");
+            // console.log("it worked");
 
             timeLeft = timeLeft + 10;
 
