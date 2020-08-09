@@ -100,22 +100,24 @@ window.onload = function () {
         $("save-score-btn").show();
         $("article").hide();
 
-        highScoreDisplay.innerHTML = "your score is:" + score;
+        // highScoreDisplay.innerHTML = "your score is:" + score;
+        scoreDisplay.textContent = "your score is:" + score;
 
-
-        storeScore();
+        // storeScore();
     };
 
-    $("save-score-btn").on("click", saveGame)
-    function saveGame() {
+    $(".save-score-btn").on("click", function (event) {
+
+        console.log("you saved");
 
 
         localStorage.setItem("score", JSON.stringify(score));
 
         console.log(localStorage);
+    });
 
 
-    }
+
 
     $("#answer-btns").on("click", function (event) {
 
