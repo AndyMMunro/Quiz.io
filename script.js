@@ -8,11 +8,17 @@ window.onload = function () {
     var questionDisplay = document.getElementById("question-display");
     var ansBtn = Array.from(document.getElementsByClassName("ans-btn"));
     var questionCounterDisplay = document.getElementsByClassName("question-counter")
-    var highScoreDisplay = $("high-score-display")
-    // Var highScores = [];
+    var highScoreName = $(".high-score-name")
+    var lastScore = $(".last-score")
     var scoreDisplay = document.getElementById("scoreboard")
     var score = 0;
     var questionCounter = 0;
+    var winners = {
+        finishScores: 0,
+        name: "",
+    }
+
+
 
     var questionBank = [
         {
@@ -48,6 +54,10 @@ window.onload = function () {
 
     $("#start-btn").on("click", startGame)
 
+    localStorage.getItem(winners)
+    lastScore.innerText = winners;
+
+    console.log(lastScore);
 
     function startGame() {
 
@@ -108,10 +118,14 @@ window.onload = function () {
 
     $(".save-score-btn").on("click", function (event) {
 
+        winners.finishScores = score;
+        winners.name = highScoreName.val();
+        console.log(highScoreName.val());
+
         console.log("you saved");
 
 
-        localStorage.setItem("score", JSON.stringify(score));
+        localStorage.setItem("winners", JSON.stringify(winners));
 
         console.log(localStorage);
     });
