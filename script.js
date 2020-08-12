@@ -13,10 +13,11 @@ window.onload = function () {
     var scoreDisplay = document.getElementById("scoreboard")
     var score = 0;
     var questionCounter = 0;
-    var winners = {
-        finishScores: 0,
-        name: "",
-    }
+    var winnerNameScore = [];
+    // var winners = {
+    //     finishScores: 0,
+    //     name: "",
+    // }
 
 
 
@@ -54,8 +55,31 @@ window.onload = function () {
 
     $("#start-btn").on("click", startGame)
 
-    localStorage.getItem(winners)
-    lastScore.innerText = winners;
+    var scoreNameStorage = localStorage.getItem("winner")
+
+    if (scoreNameStorage) {
+        scoreNameStorage = JSON.parse(scoreNameStorage)
+        winnerNameScore = scoreNameStorage
+    }
+
+    else {
+        lastScore.textContent = "none";
+    }
+
+    for (var i = 0; i < winnerNameScore.length; i++) {
+
+        lastScore.textContent = winnerNameScore[i];
+
+
+    };
+
+
+
+    // itterate through the array then append a new h3 line for every score /
+    // that has been created 
+
+    console.log(scoreNameStorage)
+
 
     console.log(lastScore);
 
@@ -117,17 +141,31 @@ window.onload = function () {
     };
 
     $(".save-score-btn").on("click", function (event) {
+        var winner = {
+            score,
+            name,
+        }
 
-        winners.finishScores = score;
-        winners.name = highScoreName.val();
-        console.log(highScoreName.val());
+        winner.score = score;
 
-        console.log("you saved");
+        winner.name = highScoreName.val();
+
+        winnerNameScore.push(winner)
+
+        console.log(winnerNameScore);
+
+        console.log(winner);
 
 
-        localStorage.setItem("winners", JSON.stringify(winners));
+        // console.log(highScoreName.val());
 
-        console.log(localStorage);
+        // console.log("you saved");
+
+
+        localStorage.setItem("winner", JSON.stringify(winnerNameScore));
+
+        // console.log(localStorage);
+
     });
 
 
@@ -156,6 +194,7 @@ window.onload = function () {
             timeLeft = timeLeft + 10;
 
         }
+
         else {
             timeLeft = timeLeft - 10;
         }
