@@ -1,4 +1,4 @@
-window.onload = function () {
+$(document).ready(function () {
 
     // Timer variables
     var timerEl = document.getElementById("countdown-timer");
@@ -8,18 +8,13 @@ window.onload = function () {
     var questionDisplay = document.getElementById("question-display");
     var ansBtn = Array.from(document.getElementsByClassName("ans-btn"));
     var questionCounterDisplay = document.getElementsByClassName("question-counter")
-    var highScoreName = $(".high-score-name")
-    var lastScore = $(".last-score")
+    var lastScore = document.getElementsByClassName("high-score")
     var scoreDisplay = document.getElementById("scoreboard")
+    var showPrevScores = document.getElementById("#high-scores-list")
+
     var score = 0;
     var questionCounter = 0;
-    var winnerNameScore = [];
-    // var winners = {
-    //     finishScores: 0,
-    //     name: "",
-    // }
-
-
+    var winnerName = [];
 
     var questionBank = [
         {
@@ -49,46 +44,55 @@ window.onload = function () {
         },
     ];
 
-
     $(".high-score").hide();
     $("save-score-btn").hide();
+    $(".count-down-timer").hide();
 
     $("#start-btn").on("click", startGame)
 
-    var scoreNameStorage = localStorage.getItem("winner")
+    // function showScores() {
+
+    console.log("test")
+    var scoreNameStorage = localStorage.getItem("savedScores")
 
     if (scoreNameStorage) {
         scoreNameStorage = JSON.parse(scoreNameStorage)
-        winnerNameScore = scoreNameStorage
+        winnerName = scoreNameStorage
     }
-
     else {
         lastScore.textContent = "none";
     }
 
-    for (var i = 0; i < winnerNameScore.length; i++) {
+    for (var i = 0; i < winnerName.length; i++) {
 
-        lastScore.textContent = winnerNameScore[i];
+        let scoreName = winnerName[i].name;
+        let score = winnerName[i].score;
 
+        console.log(winnerName[i])
 
+        let = $("<h5>").text(lastScore);
+        $("#high-scores-list").append(`<p>Name ${scoreName}</p>`, `<p>Score ${score}</p>`);
     };
+
+    // }
+    console.log("test2")
 
 
 
     // itterate through the array then append a new h3 line for every score /
     // that has been created 
 
-    console.log(scoreNameStorage)
+    // console.log(scoreNameStorage)
 
 
-    console.log(lastScore);
+    // console.log(lastScore);
 
     function startGame() {
 
 
         $("#start-btn").hide();
         $(".hide").show();
-
+        $(".count-down-timer").show();
         questionCounter = 0;
         score = 0;
 
@@ -130,44 +134,57 @@ window.onload = function () {
         // display score in the end game function 
         // then add a click event to save the score and name entered 
 
+        $(".col-sm-8").hide();
         $(".high-score").show();
         $("save-score-btn").show();
-        $("article").hide();
 
         // highScoreDisplay.innerHTML = "your score is:" + score;
-        scoreDisplay.textContent = "your score is:" + score;
+        scoreDisplay.textContent = "your score is: " + score;
 
         // storeScore();
     };
 
     $(".save-score-btn").on("click", function (event) {
-        var winner = {
-            score,
-            name,
-        }
 
-        winner.score = score;
+        var highScoreName = document.getElementById("high-score-name")
 
-        winner.name = highScoreName.val();
+        console.log(highScoreName)
 
-        winnerNameScore.push(winner)
+        let savedScores = {
+            "score": score,
+            "name": highScoreName.value
+        };
 
-        console.log(winnerNameScore);
+        winnerName.push(savedScores);
 
-        console.log(winner);
+        // var scoreNameStorage = JSON.parse(localStorage.getItem("savedScores"))
+
+        // let storage = ((scoreNameStorage == null) ? [savedScores] : scoreNameStorage.push(savedScores))
+
+        // savedScores.score = score;
+
+        // savedScores.name = highScoreName.val()
+
+        // scoreNameStorage.push(savedScores)
+
+        console.log(winnerName);
+
+        console.log(savedScores.name);
+
+        // console.log(highScoreName);
+
+        console.log("you saved");
+
+        localStorage.setItem("savedScores", JSON.stringify(winnerName));
 
 
-        // console.log(highScoreName.val());
-
-        // console.log("you saved");
-
-
-        localStorage.setItem("winner", JSON.stringify(winnerNameScore));
+        location.reload();
 
         // console.log(localStorage);
 
     });
 
+    // showScores();
 
 
 
@@ -206,9 +223,8 @@ window.onload = function () {
 
         getNewQuestion();
 
-
-
-
     });
 
-};
+
+
+});

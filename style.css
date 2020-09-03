@@ -1,12 +1,15 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-body {
+/* .container-fluid div {
+    border: 1px solid black
+} */
 
+
+body {
     padding: 0;
     margin: 0;
     display: flex;
@@ -14,42 +17,62 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: darkgreen;
+    background-color: lightgrey;
 }
 
-p {
-    background-color: blanchedalmond;
-    display: -ms-inline-grid;
+.row {
     justify-content: center;
-    font-size: 20px;
-    height: 50px;
-    width: 150px;
 }
 
-#scoreboard {
-    background-color: lightblue;
-
-}
-
-h3 {}
-
-.container {
+.container-flex {
 
     padding: 20;
-    width: 300px;
-    max-width: 80%;
-    height: 400px;
-    background-color: gray;
-
+    margin: auto;
 }
 
-.question-counter {
-    background-color: lightyellow;
-    display: -ms-inline-grid;
+
+.high-score-dis {
     justify-content: center;
+    text-align: center;
     font-size: 20px;
-    height: 50px;
-    width: 150px;
+    height: 100%;
+    width: 33%;
+}
+
+.q-counter-dis {
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    height: 100%;
+    width: 33%;
+}
+
+.score-board-dis {
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    height: 100%;
+    width: 33%;
+}
+
+.count-down-timer {
+    justify-content: center;
+    text-align: center;
+}
+
+.high-scores-list {
+    justify-content: center;
+    text-align: center;
+}
+
+.high-score {
+    justify-content: center;
+    text-align: center;
+}
+
+
+#question-display {
+    text-align: center;
 }
 
 .btn-grid {
@@ -76,12 +99,18 @@ h3 {}
     justify-content: center;
     align-items: center;
     padding: 5px;
+    margin: 10px;
 
 }
 
 .start-btn {
     margin: auto;
 }
+
+.last-score {
+    text-align: center;
+}
+
 
 .hide {
     display: none;
