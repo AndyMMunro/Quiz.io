@@ -88,7 +88,7 @@ window.onload = function () {
     function getNewQuestion() {
 
         if (availableQuestions.length === 0) {
-            alert("stop fucking clicking ass")
+            alert("stop clicking ass")
             return;
         }
         // for (var i = 0; i < questionDisplay.length; i++) {
