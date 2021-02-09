@@ -1,7 +1,7 @@
 
   
-  ## https://github.com/AndyMMunro/Quiz.io
-  
+https://andymmunro.github.io/Quiz.io/
+
   ## Description
     Small quiz application that has a timer counts points and saves a high score in the browser. 
   
